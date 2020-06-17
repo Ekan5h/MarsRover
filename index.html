@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+        <style>
+            #flare{
+                position: absolute;
+                top:-200px;
+                right:-100px;
+                width:500px;
+                height: 500px;
+                transform: rotate(-90deg);
+                z-index: 1000;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="can" style="position:relative; overflow: hidden; height: 600px; width: 800px;">
+            <img src="sun.png" id="flare">
+        </div>
+        <script>
+            x = -250
+            let bg;
+            function setup() {
+                can = createCanvas(800, 600, WEBGL);
+                pixelDensity(1);
+                can.parent("can");
+            }
+
+            function draw() {
+                background(0);
+                fill(255, 120, 0);
+                noStroke();
+                camera(x, 0, 75+80*noise(x / 125 + 0.2, 0), x + 250, 0, 20, 0, 0, -1);
+                for (var i = Math.floor(x / 25); i <= Math.floor((x + 500) / 25); i++) {
+                    for (var j = -10; j <= 10; j++) {
+                    m = (noise(i / 5, j / 5) + noise(i / 5, j / 5 + 0.2) + noise(i / 5 + 0.2, j / 5)) / 3;
+                    fill(lerpColor(color(0, 0, 0), color(255, 120, 0), m));
+                    beginShape();
+                    vertex(25 * i, 25 * j, 80 * noise(i / 5, j / 5));
+                    vertex(25 * i, 25 * j + 25, 80 * noise(i / 5, (j + 1) / 5));
+                    vertex(25 * i + 25, 25 * j, 80 * noise((i + 1) / 5, j / 5));
+                    endShape();
+                    m = (noise(i / 5 + 0.2, j / 5 + 0.2) + noise(i / 5, j / 5 + 0.2) + noise(i / 5 + 0.2, j / 5)) / 3;
+                    fill(lerpColor(color(0, 0, 0), color(255, 120, 0), m));
+                    beginShape();
+                    vertex(25 * i + 25, 25 * j + 25, 80 * noise(i / 5 + 0.2, j / 5 + 0.2));
+                    vertex(25 * i, 25 * j + 25, 80 * noise(i / 5, j / 5 + 0.2));
+                    vertex(25 * i + 25, 25 * j, 80 * noise(i / 5 + 0.2, j / 5));
+                    endShape();
+                    }
+                }
+                x += 3-noise(x / 125 + 0.2, 0);
+            }
+        </script>
+    </body>
+</html>
