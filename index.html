@@ -32,20 +32,20 @@
                 noStroke();
                 camera(x, 0, 75+80*noise(x / 125 + 0.2, 0), x + 250, 0, 20, 0, 0, -1);
                 for (var i = Math.floor(x / 25); i <= Math.floor((x + 500) / 25); i++) {
-                    for (var j = -10; j <= 10; j++) {
+                    for (var j = 0; j <= 20; j++) {
                     m = (noise(i / 5, j / 5) + noise(i / 5, j / 5 + 0.2) + noise(i / 5 + 0.2, j / 5)) / 3;
                     fill(lerpColor(color(0, 0, 0), color(255, 120, 0), m));
                     beginShape();
-                    vertex(25 * i, 25 * j, 80 * noise(i / 5, j / 5));
-                    vertex(25 * i, 25 * j + 25, 80 * noise(i / 5, (j + 1) / 5));
-                    vertex(25 * i + 25, 25 * j, 80 * noise((i + 1) / 5, j / 5));
+                    vertex(25 * i, 25 * j - 250, 80 * noise(i / 5, j / 5));
+                    vertex(25 * i, 25 * j + 25 - 250, 80 * noise(i / 5, (j + 1) / 5));
+                    vertex(25 * i + 25, 25 * j - 250, 80 * noise((i + 1) / 5, j / 5));
                     endShape();
                     m = (noise(i / 5 + 0.2, j / 5 + 0.2) + noise(i / 5, j / 5 + 0.2) + noise(i / 5 + 0.2, j / 5)) / 3;
                     fill(lerpColor(color(0, 0, 0), color(255, 120, 0), m));
                     beginShape();
-                    vertex(25 * i + 25, 25 * j + 25, 80 * noise(i / 5 + 0.2, j / 5 + 0.2));
-                    vertex(25 * i, 25 * j + 25, 80 * noise(i / 5, j / 5 + 0.2));
-                    vertex(25 * i + 25, 25 * j, 80 * noise(i / 5 + 0.2, j / 5));
+                    vertex(25 * i + 25, 25 * j + 25 - 250, 80 * noise(i / 5 + 0.2, j / 5 + 0.2));
+                    vertex(25 * i, 25 * j + 25 - 250, 80 * noise(i / 5, j / 5 + 0.2));
+                    vertex(25 * i + 25, 25 * j - 250, 80 * noise(i / 5 + 0.2, j / 5));
                     endShape();
                     }
                 }
