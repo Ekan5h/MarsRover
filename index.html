@@ -30,8 +30,8 @@
                 background(0);
                 fill(255, 120, 0);
                 noStroke();
-                camera(x, 0, 75+80*noise(x / 125 + 0.2, 2), x + 250, 0, 20, 0, 0, -1);
-                for (var i = Math.floor(x / 25); i <= Math.floor((x + 500) / 25); i++) {
+                camera(x, 0, 75+80*noise(x / 125 + 0.2, 2), x + 75, 0, 60+80*noise(x / 125 + 0.8, 2), 0, 0, -1);
+                for (var i = Math.floor(x / 25); i <= Math.floor((x + 750) / 25); i++) {
                     for (var j = 0; j <= 20; j++) {
                     m = (noise(i / 5, j / 5) + noise(i / 5, j / 5 + 0.2) + noise(i / 5 + 0.2, j / 5)) / 3;
                     fill(lerpColor(color(0, 0, 0), color(255, 120, 0), m));
