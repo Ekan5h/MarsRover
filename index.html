@@ -30,26 +30,28 @@
                 background(0);
                 fill(255, 120, 0);
                 noStroke();
-                camera(x, 0, 75+80*noise(x / 125 + 0.2, 2), x + 75, 0, 60+80*noise(x / 125 + 0.8, 2), 0, 0, -1);
-                for (var i = Math.floor(x / 25); i <= Math.floor((x + 750) / 25); i++) {
-                    for (var j = 0; j <= 20; j++) {
+                camera(x, 0, 120, x + 75, 0, 100, 0, 0, -1);
+                // camera(x, 0, 75+80*noise(x / 125 + 0.2, 2), x + 75, 0, 60+80*noise(x / 125 + 0.8, 2), 0, (noise(x / 125 + 0.2, 2+0.2) - noise(x / 125 + 0.2, 2-0.2))/5, -1);
+                for (var i = Math.floor(x / 25); i <= Math.floor((x + 500) / 25); i++) {
+                    for (var j = 0; j <= 40; j++) {
                     m = (noise(i / 5, j / 5) + noise(i / 5, j / 5 + 0.2) + noise(i / 5 + 0.2, j / 5)) / 3;
                     fill(lerpColor(color(0, 0, 0), color(255, 120, 0), m));
                     beginShape();
-                    vertex(25 * i, 25 * j - 250, 80 * noise(i / 5, j / 5));
-                    vertex(25 * i, 25 * j + 25 - 250, 80 * noise(i / 5, (j + 1) / 5));
-                    vertex(25 * i + 25, 25 * j - 250, 80 * noise((i + 1) / 5, j / 5));
+                    vertex(25 * i, 25 * j - 500, 80 * noise(i / 5, j / 5));
+                    vertex(25 * i, 25 * j + 25 - 500, 80 * noise(i / 5, (j + 1) / 5));
+                    vertex(25 * i + 25, 25 * j - 500, 80 * noise((i + 1) / 5, j / 5));
                     endShape();
                     m = (noise(i / 5 + 0.2, j / 5 + 0.2) + noise(i / 5, j / 5 + 0.2) + noise(i / 5 + 0.2, j / 5)) / 3;
                     fill(lerpColor(color(0, 0, 0), color(255, 120, 0), m));
                     beginShape();
-                    vertex(25 * i + 25, 25 * j + 25 - 250, 80 * noise(i / 5 + 0.2, j / 5 + 0.2));
-                    vertex(25 * i, 25 * j + 25 - 250, 80 * noise(i / 5, j / 5 + 0.2));
-                    vertex(25 * i + 25, 25 * j - 250, 80 * noise(i / 5 + 0.2, j / 5));
+                    vertex(25 * i + 25, 25 * j + 25 - 500, 80 * noise(i / 5 + 0.2, j / 5 + 0.2));
+                    vertex(25 * i, 25 * j + 25 - 500, 80 * noise(i / 5, j / 5 + 0.2));
+                    vertex(25 * i + 25, 25 * j - 500, 80 * noise(i / 5 + 0.2, j / 5));
                     endShape();
                     }
                 }
-                x += 3-noise(x / 125 + 0.2, 2);
+                x+=3;
+                // x += 3-noise(x / 125 + 0.2, 2);
             }
         </script>
     </body>
